@@ -105,9 +105,8 @@
 			font-size: 20px;
 			font-weight: bold;
 		}
-        .pageTitle {
-            font-Size: 25px;
-            margin: 20px 10px;
-            font-weight: bold;
+        #pageTitle.pageLink a {
+            color: #0f0f0f;
+			border-bottom: 2px solid #bb8fce;
         }
 </style>
