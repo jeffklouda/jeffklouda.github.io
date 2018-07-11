@@ -1,9 +1,8 @@
-<style>
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
 		v2.0 | 20110126
 		License: none (public domain)
 		*/
-		
+
 		html, body, div, span, applet, object, iframe,
 		h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 		a, abbr, acronym, address, big, cite, code,
@@ -13,8 +12,8 @@
 		dl, dt, dd, ol, ul, li,
 		fieldset, form, label, legend,
 		table, caption, tbody, tfoot, thead, tr, th, td,
-		article, aside, canvas, details, embed, 
-		figure, figcaption, footer, header, hgroup, 
+		article, aside, canvas, details, embed,
+		figure, figcaption, footer, header, hgroup,
 		menu, nav, output, ruby, section, summary,
 		time, mark, audio, video {
 			margin: 0;
@@ -25,7 +24,7 @@
 			vertical-align: baseline;
 		}
 		/* HTML5 display-role reset for older browsers */
-		article, aside, details, figcaption, figure, 
+		article, aside, details, figcaption, figure,
 		footer, header, hgroup, menu, nav, section {
 			display: block;
 		}
@@ -48,13 +47,16 @@
 			border-spacing: 0;
 		}
 		body {
-			background-color: #f0f0f0;
-			font-family: Helvetica, Verdana, sans-serif;
+			background-color: #ffffff;
+			font-family: "Open Sans", sans-serif;
 			color: #0f0f0f;
 		}
 		a {
 			text-decoration: none;
 			color: #0f0f0f;
+		}
+		.navbar-brand {
+
 		}
 		#topBar {
 			height: 46px;
@@ -63,16 +65,16 @@
 			position: relative;
 			float: left;
 			margin: 0 10px;
-			top: 8px;
-			font-size: 20px;
+			top: 14px;
+			font-size: 18px;
 			font-weight: bold;
 		}
 		.pageLink {
 			position: relative;
 			float: left;
 			padding: 0 10px;
-			top: 8px;
-			font-size: 20px;
+			top: 14px;
+			font-size: 18px;
 			font-weight: bold;
 			border-left: 2px solid #c0c0c0;
         }
@@ -86,14 +88,9 @@
 			clear: both;
 			height: 3px;
 			width: 100%;
-			/*background-color: #5b2c6f;*/
+			background-color: #5b2c6f;
 			margin: 0 auto;
-			background: #4739a3; /* Old browsers */
-			background: -moz-linear-gradient(-45deg, #4739a3 0%, #cc61c8 67%, #9b449a 100%); /* FF3.6-15 */
-			background: -webkit-linear-gradient(-45deg, #4739a3 0%,#cc61c8 67%,#9b449a 100%); /* Chrome10-25,Safari5.1-6 */
-			background: linear-gradient(135deg, #4739a3 0%,#cc61c8 67%,#9b449a 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4739a3', endColorstr='#9b449a',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-		}
+        }
 		#aboutMe {
 			padding-bottom: 10px;
 			float: left;
@@ -107,20 +104,46 @@
 			color: #f0f0f0;
 		}
 		.sectionTitle {
-			margin: 10px;
-			font-size: 20px;
+			margin-top: 10px;
+            margin-left: 10px;
+			margin-bottom: 0;
+            font-size: 14px;
 			font-weight: bold;
 		}
         #pageTitle.pageLink a {
             color: #0f0f0f;
-			border-bottom: 2px solid #bb8fce;
         }
 		.section {
+            font-size: 14px;
+            line-height: 17px;
 			margin: 0 10px;
+            margin-top: 2px;
 		}
-		img {
-			display: block;
+		.thumbnail {
+			display: inline-block;
+			height: 200px;
+			width: 200px;
+			margin: 10px 0 0 10px;
+		}
+		.thumbnail:hover {
+			background-color: #000000;
+		}
+		img:hover {
+				background-color: #909090;
+		}
+		.navbar-brand {
+			font-size: 16px;
+		}
+		.nav-item {
+			font-size: 16px;
+		}
+		#bg-test {
+			background-color: #ffffff;
+		}
+		#projectName {
+			font-size: 20px;
+			padding: 20px;
+		}
+		.projectPic {
 			height: 300px;
-			margin: 10px auto;
 		}
-</style>
