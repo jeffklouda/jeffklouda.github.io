@@ -131,7 +131,12 @@
 		img:hover {
 				background-color: #909090;
 		}
-		.navbar-brand {
+		.thumbnail_text {
+            position: absolute;
+            top: 8px;
+            display: none;
+        }
+        .navbar-brand {
 			font-size: 16px;
 		}
 		.nav-item {

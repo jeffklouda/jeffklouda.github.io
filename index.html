@@ -45,10 +45,12 @@
                     <a href="design/projectID.html">
                         <img class="thumbnail" src="images/4i.png">
                     </a>
+                    <p class="thumbnail_text">Title</p>
                 </div>
                 <div class="col-sm">
                     <a href="design.html">
                         <img class="thumbnail" src="images/4i.png">
+			<p class="thumbnail_text">TITLE2</p>
                     </a>
                 </div>
                 <div class="col-sm">
@@ -59,6 +61,18 @@
             </div>
         </div>
     </div>
+	<div class="thumb_test">
+                    <a href="design/projectID.html">
+                        <img class="thumbnail" src="images/4i.png">
+                    </a>
+                    <p class="thumbnail_text">Title</p>
+                </div>
+                <div class="thumb_test">
+                    <a href="design.html">
+                        <img class="thumbnail" src="images/4i.png">
+			<p class="thumbnail_text">TITLE2</p>
+                    </a>
+                </div>
 	</body>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
@@ -67,5 +81,15 @@
         $('#changeCssButton').click(function() {
             $('#style').attr('href','newstyle.css');
         });
+    </script>
+    <script>
+        $('.thumb_test')
+            .mouseover(function() {
+                $(this).find('.thumbnail_text').show();
+                console.log("something happened");
+            })
+            .mouseout(function() {
+                $('.thumbnail_text').hide();
+            });
     </script>
 </html>
