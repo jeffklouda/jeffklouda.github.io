@@ -1,0 +1,134 @@
+body {
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    color: #000000;
+}
+
+.container {
+    background-color: #ffffff;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    width: 600px;
+}
+
+.title {
+    font-family: mrs-eaves-roman-small-caps, serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 100px;
+    width: 450px;
+    height: 150px;
+    margin: 0;
+    vertical-align: baseline;
+    transform: rotate(-90deg);
+    position: relative;
+    top: 160px;
+    left: -162px;
+    
+}
+
+.the_letter {
+    border: 0;
+    font-family: mrs-eaves, serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 700px;
+    line-height: 500px;
+    height: 342px;
+    width: 400px;
+    position: relative;
+    top: -150px;
+    left: 90px;
+}
+
+.sample_set{
+    font-family: mrs-eaves, serif;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 80px;
+    font-size: 80px;
+    margin: 24px 0;
+}
+
+.line_1 {
+    letter-spacing: 18px;
+}
+
+.line_2 {
+    letter-spacing: 25px;
+}
+
+.button {
+    font-family: mrs-eaves-roman-small-caps, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    height: 40px;
+    width: 175px;
+    background-color: #d84027;
+    color: #fff;
+    text-align: center;
+    line-height: 1.75;
+    margin: 0 auto;
+}
+
+.banner {
+    font-family: mrs-eaves-roman-small-caps, sans-serif;
+    font-style: normal;
+    font-size: 40px;
+    height: 60px;
+    color: #fff;
+    background-color: #d84027;
+    vertical-align: middle;
+    line-height: 60px;
+    padding: 0 600px;
+    width: 100%;
+    position: relative;
+    left: -600px;
+}
+
+.info_section {
+    font-size: 14px;
+    font-family: canada-type-gibson, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    margin: 24px 0 36px 0;
+}
+
+.jeff_info {
+    font-family: mrs-eaves;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.name {
+    font-size: 20px;
+    margin: 0 24px;
+}
+.major {
+    font-size: 14px;
+    margin: 0 24px;
+}
+
+.jeff_info img{
+    float: left;
+    margin: 0 24px 0 0;
+}
+
+.sources {
+    font-size: 10px;
+    font-family: canada-type-gibson, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    margin: 24px 0 0 0;
+}
+.sources p{
+    margin: 0;
+}
+
+.bottom {
+    margin: 0 0 100px 0;
+}
