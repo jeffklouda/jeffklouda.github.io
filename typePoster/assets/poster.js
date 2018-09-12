@@ -1,10 +1,14 @@
 var analysis_hidden = true;
+console.log ($('.title').css('left'));
 
-$('.analysis_button')
+$('#button')
     .click(function() {
         if (analysis_hidden) {
             analysis_hidden = false;
             $(this).html("<br>Hide Analysis");
+            $(this).animate({}
+                left: "574px"
+            }, 750);
             $('.title').animate({
                 left: "-262px"
             }, 750);
@@ -12,6 +16,9 @@ $('.analysis_button')
                 left: "190px"
             }, 750);
         } else {
+            $(this).animate({
+                left: "474px"
+            }, 750)
             $('.title').animate({
                 left: "-162px"
             }, 750);

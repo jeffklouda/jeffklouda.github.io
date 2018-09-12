@@ -6,12 +6,16 @@ body {
 }
 
 .container {
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     margin-top: 0;
     margin-left: auto;
     margin-right: auto;
     height: auto;
     width: 600px;
+}
+
+.top {
+    position: relative;
 }
 
 .title {
@@ -51,7 +55,7 @@ body {
     font-style: normal;
     line-height: 80px;
     font-size: 80px;
-    margin: 24px 0;
+    margin: 0 0 24px 0;
 }
 
 .line_1 {
@@ -69,10 +73,12 @@ body {
     font-size: 18px;
     height: 80px;
     width: 80px;
-    background-color: #d84027;
+    background-color: #982007;
     color: #fff;
     margin: 0 auto;
-    position: relative;
+    position: absolute;
+    top: 173px;
+    left: 474px;
     z-index: 100;
     border-radius: 50%;
     text-align: center;
@@ -85,7 +91,8 @@ body {
     font-size: 40px;
     height: 60px;
     color: #fff;
-    background-color: #d84027;
+/*    background-color: #d84027;*/
+    background-color: #982007;
     vertical-align: middle;
     line-height: 60px;
     padding: 0 100px;
