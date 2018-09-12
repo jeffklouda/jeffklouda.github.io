@@ -6,7 +6,7 @@ body {
 }
 
 .container {
-    background-color: #ffffff;
+    background-color: #f0f0f0;
     margin-top: 0;
     margin-left: auto;
     margin-right: auto;
@@ -26,7 +26,7 @@ body {
     transform: rotate(-90deg);
     position: relative;
     top: 160px;
-    left: -162px;
+    left: -175px;
     
 }
 
@@ -41,7 +41,7 @@ body {
     width: 400px;
     position: relative;
     top: -150px;
-    left: 90px;
+    left: 80px;
     z-index: 0;
 }
 
@@ -66,16 +66,17 @@ body {
     font-family: mrs-eaves-roman-small-caps, sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
-    height: 40px;
-    width: 175px;
+    font-size: 18px;
+    height: 80px;
+    width: 80px;
     background-color: #d84027;
     color: #fff;
-    text-align: center;
-    line-height: 1.75;
     margin: 0 auto;
     position: relative;
     z-index: 100;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 1;
 }
 
 .banner {

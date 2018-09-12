@@ -4,7 +4,7 @@ $('.analysis_button')
     .click(function() {
         if (analysis_hidden) {
             analysis_hidden = false;
-            $(this).html("Hide Analysis");
+            $(this).html("<br>Hide Analysis");
             $('.title').animate({
                 left: "-262px"
             }, 750);
@@ -19,7 +19,7 @@ $('.analysis_button')
                 left: "90px"
             }, 750);
             analysis_hidden = true;
-            $(this).html("Show Analysis");
+            $(this).html("<Br>Show Analysis");
         }
         
 });
