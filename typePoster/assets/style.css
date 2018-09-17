@@ -112,11 +112,11 @@ body {
 }
 
 .info_section {
-    font-size: 14px;
+    font-size: 16px;
     font-family: canada-type-gibson, sans-serif;
     font-style: normal;
     font-weight: 300;
-    margin: 24px 0 24px 0;
+    margin: 30px 0;
 }
 
 .jeff_info {
