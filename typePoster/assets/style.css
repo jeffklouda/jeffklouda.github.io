@@ -31,7 +31,8 @@ body {
     position: relative;
     top: 160px;
     left: -175px;
-    
+    cursor: default;
+
 }
 
 .the_letter {
@@ -47,6 +48,7 @@ body {
     top: -150px;
     left: 80px;
     z-index: 0;
+    cursor: default;
 }
 
 .sample_set{
@@ -66,6 +68,13 @@ body {
     letter-spacing: 25px;
 }
 
+.analysis {
+    position: absolute;
+    z-index: 20;
+    top: -3.3px;
+    left: 72.6px;
+}
+
 .analysis_button {
     font-family: mrs-eaves-roman-small-caps, sans-serif;
     font-style: normal;
@@ -77,12 +86,13 @@ body {
     color: #fff;
     margin: 0 auto;
     position: absolute;
-    top: 173px;
-    left: 474px;
-    z-index: 100;
+    top: 166px;
+    left: 496px;
+    z-index: 30;
     border-radius: 50%;
     text-align: center;
     line-height: 1;
+    cursor: pointer;
 }
 
 .banner {
@@ -106,7 +116,7 @@ body {
     font-family: canada-type-gibson, sans-serif;
     font-style: normal;
     font-weight: 300;
-    margin: 24px 0 36px 0;
+    margin: 24px 0 24px 0;
 }
 
 .jeff_info {
