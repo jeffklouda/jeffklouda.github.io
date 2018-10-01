@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+#container {
+    padding: 0;
+    margin: 0;
+}
+
+#title {
+    font-size:      96px;
+    height:         90px;
+    line-height: 0.675;
+    font-family: canada-type-gibson, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    margin:         auto;
+    margin-top:     226px;
+    margin-bottom:  24px;
+    text-align:     center;
+    /* background-color: red; */
+
+}
+
+#startButton {
+    height:         90px;
+    width:          185px;
+    margin-top:     0;
+    margin-bottom:  48px;
+    margin-left:    auto;
+    margin-right:   auto;
+    text-align:     center;
+    background-color: green;
+    font-size: 48px;
+    font-family: canada-type-gibson, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.75;
+    color: white;
+}
+
+#level_shapes {
+    height: 20px;
+    margin:     auto;
+}
+
+#level_select {
+    font-family: canada-type-gibson, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+
+.arrow {
+    width: 0;
+    height: 0;
+    border-top:     20px solid transparent;
+    border-bottom:  20px solid transparent;
+    cursor: pointer;
+}
+
+#arrow_left {
+    border-left:    20px solid transparent;
+    border-right:   20px solid black;
+    display:inline-block;
+    position: relative;
+    top: -15px;
+    left: -21px;
+}
+
+#arrow_right {
+    border-left:    20px solid black;
+    border-right:   20px solid transparent;
+    display: inline-block;
+    position: relative;
+    top: -14px;
+    left: 21px;
+}
+
+#level_bar {
+    height: 2px;
+    width: 25%;
+    background-color: black;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 16.25px;
+    width: 185px;
+    display:inline-block;
+    position: relative;
+    top: -18px;
+}
+
+#selected_level {
+    font-size: 32px;
+    height: 25px;
+    line-height: 0.675;
+    margin-bottom: 13.5px;
+}
+
+#level_desc {
+    font-size: 24px;
+    margin-top: 0px;
+    /* background-color: red; */
+    line-height: 0.675;
+}

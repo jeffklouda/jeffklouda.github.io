@@ -1,0 +1,203 @@
+* {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+#container {
+    height: 768px;
+    width:  1024px;
+    background-color: gray;
+    margin: 0 auto;
+    position: relative;
+}
+#note_bar {
+    height: 256px;
+    background-color: cyan;
+    width: 1024px;
+    /* margin-top: 128px; */
+    position: relative;
+    top: 128px;
+}
+
+#instruction_popup {
+    /* display: none; */
+    height: 308px;
+    width: 500px;
+    position: absolute;
+    background-color: blue;
+    top: 96px;
+    left: 262px;
+    padding-top: 12px;
+}
+
+.note {
+    background-color: indigo;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    position: absolute;
+    display: block;
+}
+
+.popup_close {
+    background-color: red;
+    height: 24px;
+    width:  24px;
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    cursor: pointer;
+}
+
+.popup_title {
+    color: white;
+    font-family: canada-type-gibson, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    text-align: center;
+}
+
+.popup_body {
+    color: white;
+    font-family: canada-type-gibson, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+    width: 80%;
+    margin: 12px auto 0 auto;
+}
+
+.vert_bar {
+    height: 128px;
+    width: 4px;
+    background-color: black;
+    position: absolute;
+    z-index: 10;
+    top: 64px;
+}
+
+#left_bar {
+    left: 0px;
+    border-left: solid cyan;
+    border-left-width: 100px;
+    z-index: 100;
+}
+
+#middle_bar {
+    height: 256px;
+    width: 2px;
+    position: absolute;
+    background-color: black;
+    top: 0;
+    left: 510px;
+
+}
+
+#right_bar {
+    left: 919px;
+    border-right: 100px solid cyan;
+    z-index: 100;
+}
+
+#horiz_bar {
+    position: absolute;
+    top: 126px;
+    left: 100px;
+    height: 2px;
+    width: 820px;
+    background-color: black;
+    z-index: 0;
+}
+
+.drum_popup {
+    height: 136px;
+    width: 336px;
+    background-color: yellowgreen;
+    position: absolute;
+    padding-top: 6px;
+    top: 478px;
+    left: 343px;
+}
+
+#start_game_popup {
+    display: none;
+    color: white;
+    font-family: canada-type-gibson, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 3.5;
+    letter-spacing: 0.5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#end_game_popup {
+    display: none;
+}
+
+#repeat_after_me {
+    display: none;
+    color: black;
+    font-family: canada-type-gibson, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    text-align: center;
+    width: 100%;
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 406px;
+    cursor: default;
+}
+
+#menu {
+    position: absolute;
+    top: 554px;
+    left: 36px;;
+}
+
+.end {
+    text-align: center;
+    padding: 0;
+    width: 185px;
+    margin: 6px auto;
+    vertical-align: bottom;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    height: 33px;
+    width: 165px;
+    background-color: navy;
+    margin: 6px 0;
+    padding: 0 0 0 20px;
+    color: white;
+    font-size:      24px;
+    line-height: 1.25;
+    font-family: canada-type-gibson, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+#drum {
+    height:     260px;
+    width:      274px;
+    background: navy;
+    position: absolute;
+    left: 375px;
+    top: 485px;
+}

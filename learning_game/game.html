@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<head>
+    <link rel="stylesheet" href="https://use.typekit.net/gur3hpx.css">
+    <link rel="stylesheet" href="assets/game_style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="assets/rhythm.js"></script>
+    <title>Rhythm Game</title>
+</head>
+<body>
+<div id="container">
+    <div id="note_bar">
+        <div class="vert_bar" id="left_bar"></div>
+        <div id="middle_bar"></div>
+        <div id="horiz_bar"></div>
+        <div class="vert_bar" id="right_bar"></div>
+    </div>
+    <div id="drum">
+        <div id="hand"></div>
+    </div>
+    <div id="instruction_popup">
+        <div class="popup_close"></div>
+        <div class="popup_title">Lorem ipsum</div>
+        <p class="popup_body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    <div id="start_game_popup" class="drum_popup">Click here to start!</div>
+    <div id="end_game_popup" class="drum_popup">
+        <ul id="end_menu">
+            <p class="popup_title">Great Work!</p>
+            <p id="score" class="popup_title">Your Score: </p>
+            <a href="game.html"><li class="end">Next Level</li></a>
+            <a href="game.html"><li class="end">Try Again</li></a>
+        </ul>
+    </div>
+    <div id="repeat_after_me">Repeat after me!</div>
+    <ul id="menu">
+        <li id="metro_menu"><span>Metronome</span>
+            <label class="switch">
+                <input id="metro_check" type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </li>
+        <a href="game.html"><li>Restart Level</li></a>
+        <a href="index.html"><li>Change Level</li></a>
+    </ul>
+
+</div>
+</body>
+</html>
