@@ -20,6 +20,10 @@ var eight_note_time;
 var score = 0;
 var total_score = 0;
 var game_level;
+var level_presets = [
+    'qqqqqqqq',
+    'qeeqqqeeqq',
+];
 
 function BufferLoader(context, urlList, callback) {
   this.context = context;
@@ -69,10 +73,10 @@ BufferLoader.prototype.load = function() {
 }
 
 function playSound(buffer, time) {
-  var source = context.createBufferSource();
-  source.buffer = buffer;
-  source.connect(context.destination);
-  source.start(time);
+    var source = context.createBufferSource();
+    source.buffer = buffer;
+    source.connect(context.destination);
+    source.start(time);
 }
 
 window.addEventListener('load', init, false);
@@ -109,12 +113,13 @@ function finishedLoading(bufferList) {
 class Note {
     constructor (type, x) {
         this.type = type;
-        this.x = right - note_width + x;
-        this.y = note_y - note_height;
+        this.x = x;                 // horizonal center of div
+        this.y = note_y;            // vertical center of div
+        this.clicked = false;
         this.html = document.createElement("DIV");
         this.html.classList.add('note');
-        this.html.style.left = this.x + 'px';
-        this.html.style.top = this.y + 'px';
+        this.html.style.left = (this.x - note_width/2) + 'px';
+        this.html.style.top = (this.y - note_height/2) + 'px';
         this.html.style.display = 'none';
         this.vis_flag = false;
         note_bar.appendChild(this.html);
@@ -122,8 +127,8 @@ class Note {
     update(elapsed_mS) {
         // Move across screen in 8 beats
         this.x = this.x - (elapsed_mS * px_speed);
-        this.html.style.left = (this.x - note_width) + 'px';
-        if (!this.vis_flag && this.x < right + 2 * note_width) {
+        this.html.style.left = (this.x - note_width/2) + 'px';
+        if (!this.vis_flag && this.x < right + note_width) {
             this.vis_flag = true;
             this.html.style.display = 'block';
         } else if (this.x < left - note_width) {
@@ -133,6 +138,7 @@ class Note {
         return true;
     }
 }
+
 function play_metronome(start_time) {
     var bars;
     if ($(metro_check).is(':checked')) {
@@ -155,13 +161,24 @@ class Game {
         this.activeNotes = [];
         this.removeNotes = [];
     }
-    async start(level) {
-        this.level = level;
-        var loc = 4 * time_per_beat * px_speed;
-        for (var i = 0; i < 8; i++) {
+    start(level) {
+        //TODO change back to this.level = level
+        this.level = 1;
+        var loc = center + 8 * time_per_beat * px_speed;
+        for (var i = 0; i < level_presets[this.level].length; i++) {
             total_score += 1;
-            this.activeNotes.push(new Note('q', loc));
-            loc += time_per_beat * px_speed;
+            var note_type = level_presets[this.level].charAt(i);
+            this.activeNotes.push(new Note(note_type, loc));
+            switch (note_type) {
+                case 'q':
+                case 'Q':
+                    loc += time_per_beat * px_speed;
+                    break;
+                case 'e':
+                case 'E':
+                    loc += (time_per_beat * px_speed) / 2;
+                    break;
+            }
         }
         play_metronome(context.currentTime);
     }
@@ -185,8 +202,10 @@ class Game {
     hit_drum() {
         var len = this.activeNotes.length;
         for (var i = 0; i < len; i++) {
-            if (this.activeNotes[i].x > center - note_width &&
-                this.activeNotes[i].x < center + 1.5*note_width) {
+            if (!this.activeNotes[i].clicked &&
+                this.activeNotes[i].x > center - note_width/2 &&
+                this.activeNotes[i].x < center + note_width/2) {
+                this.activeNotes[i].clicked = true;
                 this.activeNotes[i].html.style.backgroundColor = 'yellowgreen';
                 score += 1;
             }
@@ -227,7 +246,7 @@ $(document).ready(function() {
     note_bar = document.getElementById("note_bar");
     game_level = localStorage.getItem("level");
     // Changes based on level
-    bpm = 120;
+    bpm = 100;
     time_per_beat = 60000 / bpm;
     px_speed = ((right - left) * bpm) / 540000;
     eight_note_time = (60 / bpm) / 2;
@@ -236,6 +255,12 @@ $(document).ready(function() {
     $(".popup_close").click(function () {
         $(this).parent().hide();
         $("#start_game_popup").show();
+        $("#cover").hide();
+    });
+
+    $("#cover").click(function () {
+        $(".popup_close").click();
+        $(this).hide();
     });
 
     $("#start_game_popup").click(function () {
