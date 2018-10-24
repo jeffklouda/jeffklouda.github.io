@@ -2,14 +2,18 @@ var left;
 var right;
 var center;
 var note_y;
+var rest_y;
 var bpm;
 var time_per_beat;
 var px_speed
 var lastFrameTimeMs = 0;
 var new_note = null;
 var game;
-var note_width = 25;
-var note_height = 25;
+var note_width  = 23;
+var note_height = 89;
+var rest_height = 46;
+var note_offset = 11;
+var rest_offset = 0;
 var note_bar;
 var snare_buffer;
 var metro1_buffer;
@@ -20,9 +24,10 @@ var eight_note_time;
 var score = 0;
 var total_score = 0;
 var game_level;
+var can_hit_drum;
 var level_presets = [
-    'qqqqqqqq',
-    'qeeqqqeeqq',
+    ['nrnrnrnr', 'nrnrnrnr', 'nrnrnrnr'],
+    ['nrnrnrnrnrnrnrnr', 'nrnrnrnrnrnrnrnr', 'nrnrnrnrrnnnrnnr'],
 ];
 
 function BufferLoader(context, urlList, callback) {
@@ -113,13 +118,25 @@ function finishedLoading(bufferList) {
 class Note {
     constructor (type, x) {
         this.type = type;
-        this.x = x;                 // horizonal center of div
-        this.y = note_y;            // vertical center of div
+        this.x = x;
+        this.y = note_y;
         this.clicked = false;
-        this.html = document.createElement("DIV");
+        this.html = document.createElement("img");
         this.html.classList.add('note');
-        this.html.style.left = (this.x - note_width/2) + 'px';
-        this.html.style.top = (this.y - note_height/2) + 'px';
+        if (type == 'r') {
+            this.html.src="assets/images/rest_black.svg";
+            this.html.classList.add('rest');
+            this.offset = rest_offset;
+            this.width = 26;
+        }
+        else {
+            this.html.src="assets/images/note_black.svg";
+            this.html.classList.add('eighth');
+            this.offset = note_offset;
+            this.width = 42;
+        }
+        this.html.style.left = (this.x - this.offset) + 'px';
+        this.html.style.top = (this.y) + 'px';
         this.html.style.display = 'none';
         this.vis_flag = false;
         note_bar.appendChild(this.html);
@@ -127,16 +144,23 @@ class Note {
     update(elapsed_mS) {
         // Move across screen in 8 beats
         this.x = this.x - (elapsed_mS * px_speed);
-        this.html.style.left = (this.x - note_width/2) + 'px';
-        if (!this.vis_flag && this.x < right + note_width) {
+        this.html.style.left = (this.x - this.offset) + 'px';
+        if (!this.vis_flag && this.x < right + this.offset) {
             this.vis_flag = true;
             this.html.style.display = 'block';
-        } else if (this.x < left - note_width) {
+        } else if (this.x < left + this.offset - this.width) {
             this.html.style.display = 'none';
             return false;
         }
         return true;
     }
+}
+
+function animate_drum() {
+    playSound(snare_buffer, 0);
+    var stick = $("#drum_stick");
+    stick.animate({top: '-33px'}, 5);
+    stick.animate({top: '-83px'}, 200);
 }
 
 function play_metronome(start_time) {
@@ -161,26 +185,56 @@ class Game {
         this.activeNotes = [];
         this.removeNotes = [];
     }
+    playAuto(loc, notes, time) {
+        setTimeout(function(){
+            $("#feedback_text").html("Repeat after me!");
+            $("#feedback_text").css("color", "#000");
+            can_hit_drum = false;
+            }, (loc - center)/ px_speed - 8 * time_per_beat
+        );
+        for (var i = 0; i < notes.length; i++) {
+            var note_type = notes.charAt(i);
+            if (note_type == 'n') {
+                setTimeout(function(){
+                    animate_drum();
+                }, (loc - center)/px_speed);
+            }
+            this.activeNotes.push(new Note(note_type, loc));
+            loc += (time_per_beat * px_speed) / 2;
+        }
+        play_metronome(time);
+    }
+    playUser(loc, notes, time) {
+        setTimeout(function(){
+            $("#feedback_text").html("Your turn!");
+            $("#feedback_text").css("color", "#000");
+            can_hit_drum = true;
+            }, (loc - center)/ px_speed - 8 * time_per_beat
+        );
+        for (var i = 0; i < notes.length; i++) {
+            var note_type = notes.charAt(i);
+            if (note_type == 'n') {
+                total_score += 1;
+            }
+            this.activeNotes.push(new Note(note_type, loc));
+            loc += (time_per_beat * px_speed) / 2;
+        }
+        play_metronome(time);
+    }
     start(level) {
         //TODO change back to this.level = level
+        //TODO metronome and notes are not lined up
         this.level = 1;
         var loc = center + 8 * time_per_beat * px_speed;
-        for (var i = 0; i < level_presets[this.level].length; i++) {
-            total_score += 1;
-            var note_type = level_presets[this.level].charAt(i);
-            this.activeNotes.push(new Note(note_type, loc));
-            switch (note_type) {
-                case 'q':
-                case 'Q':
-                    loc += time_per_beat * px_speed;
-                    break;
-                case 'e':
-                case 'E':
-                    loc += (time_per_beat * px_speed) / 2;
-                    break;
-            }
+        var time = context.currentTime;
+        for (var i = 0; i < 3; i++) {
+            this.playAuto(loc, level_presets[this.level][i], time);
+            loc += 16 * time_per_beat * px_speed;
+            time += 32 * eight_note_time;
+            this.playUser(loc, level_presets[this.level][i], time);
+            loc += 16 * time_per_beat * px_speed;
+            time += 32 * eight_note_time;
         }
-        play_metronome(context.currentTime);
     }
     update(delta) {
         // Update active Notes
@@ -201,13 +255,35 @@ class Game {
     }
     hit_drum() {
         var len = this.activeNotes.length;
+        var hit_flag = false; // if a note has been hit
         for (var i = 0; i < len; i++) {
-            if (!this.activeNotes[i].clicked &&
-                this.activeNotes[i].x > center - note_width/2 &&
-                this.activeNotes[i].x < center + note_width/2) {
-                this.activeNotes[i].clicked = true;
-                this.activeNotes[i].html.style.backgroundColor = 'yellowgreen';
-                score += 1;
+            if (!hit_flag && !this.activeNotes[i].clicked &&
+                this.activeNotes[i].x > center - note_width &&
+                this.activeNotes[i].x < center + note_width) {
+                hit_flag = true;
+                if (this.activeNotes[i].x > center - note_width/2 &&
+                    this.activeNotes[i].x < center + note_width/2 &&
+                    this.activeNotes[i].type == 'n') {
+                    $("#feedback_text").html("Perfect!");
+                    $("#feedback_text").css("color", "#42ba51")
+                    this.activeNotes[i].clicked = true;
+                    this.activeNotes[i].html.src = "assets/images/note_green.svg";
+                    score += 1;
+                } else if (this.activeNotes[i].type == 'n'){
+                    this.activeNotes[i].clicked = true;
+                    this.activeNotes[i].html.src = "assets/images/note_orange.svg";
+                    score += 0.5
+                    $("#feedback_text").css("color", "#eda609");
+                    if (this.activeNotes[i].x > center) {
+                        $("#feedback_text").html("Too early!");
+                    } else {
+                        $("#feedback_text").html("Too late!");
+                    }
+                } else {
+                    $("#feedback_text").css("color", "#b82125");
+                    $("#feedback_text").html("What should this say?");
+                    score -= 0.5;
+                }
             }
         }
         return 0;
@@ -222,7 +298,7 @@ function game_loop(timestamp) {
     }
     lastFrameTimeMs = timestamp;
     if (!game.update(delta)) {
-            $("#score").html("Your Score: " + score + "/" + total_score)
+            $("#score").html("Your Score: " + (score/total_score * 100) + '%')
             $("#end_game_popup").show();
             return;
     }
@@ -236,17 +312,29 @@ function run_game() {
     }, time_per_beat);
 }
 
+
+
 $(document).ready(function() {
     left = Number($("#left_bar").css("left").replace('px', ''));
     left += Number($("#left_bar").css("border-left-width").replace('px', ''));
     right = Number($("#right_bar").css("left").replace('px', ''));
-    note_y = Number($("#horiz_bar").css("top").replace('px', ''));
-    center = Number($("#horiz_bar").css("left").replace('px', ''));
-    center += Number($("#horiz_bar").css("width").replace('px', '')) / 2;
+    note_y = Number($("#horiz_bar_3").css("top").replace('px', ''));
+    note_y = note_y - note_height + 20;
+    rest_y = Number($("#horiz_bar_2").css("top").replace('px', ''));
+    center = Number($("#horiz_bar_2").css("left").replace('px', ''));
+    center += Number($("#horiz_bar_2").css("width").replace('px', '')) / 2;
     note_bar = document.getElementById("note_bar");
-    game_level = localStorage.getItem("level");
+    /*try {
+        game_level = localStorage.getItem("level");
+    } catch {
+        alert("Level loader fail");
+        game_level = 1;
+    }*/
+    game_level = 1;
+    $("#drum_stick").css("-webkit-animation-play-state", "paused");
+    can_hit_drum = false;
     // Changes based on level
-    bpm = 100;
+    bpm = 90;
     time_per_beat = 60000 / bpm;
     px_speed = ((right - left) * bpm) / 540000;
     eight_note_time = (60 / bpm) / 2;
@@ -274,8 +362,10 @@ $(document).ready(function() {
     });
 
     $("#drum").click(function () {
-        playSound(snare_buffer, 0);
-        game.hit_drum();
+        if (can_hit_drum) {
+            animate_drum();
+            game.hit_drum();
+        }
     });
 
     $(document).keypress(function(e) {
@@ -283,5 +373,4 @@ $(document).ready(function() {
             $("#drum").click();
         }
     });
-    console.log(center);
 });

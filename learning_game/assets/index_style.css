@@ -7,51 +7,97 @@ a {
 }
 
 body {
-    background: linear-gradient(to bottom right, #eda609, #cc7105 14%, #b61c14) fixed;
+    background: linear-gradient(130deg, #eda609, #cc7105 14%, #b61c14) fixed;
 }
 
 #container {
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
+    height: 768px;
+    width:  1024px;
+    position: relative;
+}
+
+.decorative_bars {
+    margin:     0 auto;
+    width:      952px;
+    margin-top: 80px;
+    position:   relative;
+}
+
+.bar {
+    height:             3px;
+    width:              952px;
+    box-shadow:         0px 3px 6px #222;
+    background-color:   white;
+    margin: 0 auto;
+    margin-bottom:      37px;
+}
+
+.decoration {
+    position: absolute;
+    -webkit-filter: drop-shadow(0px 3px 6px #222);
+    filter:         drop-shadow(0px 3px 6px #222);
+}
+
+.note {
+    height: 110px;
+    width:  55px;
+    top:    -15px;
+}
+
+.p1 {left:  26px;}
+.p2 {left:  160px;}
+.p3 {left:  266px;}
+.p4 {left:  400px;}
+.p5 {left:  506px;}
+.p6 {left:  640px;}
+.p7 {left:  746px;}
+.p8 {left:  880px;}
+
+.rest {
+    height: 63px;
+    width:  36px;
+    top:    10px;
 }
 
 #title {
     font-size:      72px;
-    height:         90px;
+    height:         50px;
     line-height:    0.675;
     font-family:    canada-type-gibson, sans-serif;
     font-style:     normal;
     font-weight:    600;
     color:          white;
     text-shadow:    0px 3px 6px #222;
-    margin:         auto;
-    margin-top:     226px;
-    margin-bottom:  24px;
+    margin:         0 auto;
+    margin-top:     80px;
+    margin-bottom:  40px;
     text-align:     center;
 }
 
 #startButton {
-    height:         87px;
-    width:          198px;
-    border-radius:  10px;
-    box-shadow:     0px 3px 6px #222;
-    margin-top:     0;
-    margin-bottom:  48px;
-    margin-left:    auto;
-    margin-right:   auto;
-    text-align:     center;
+    height:             87px;
+    width:              198px;
+    border-radius:      10px;
+    box-shadow:         0px 3px 6px #222;
+    margin-top:         0;
+    margin-bottom:      40px;
+    margin-left:        auto;
+    margin-right:       auto;
+    text-align:         center;
     background-color:   white;
     font-size:          48px;
     font-family:        canada-type-gibson, sans-serif;
     font-style:         normal;
     font-weight:        600;
     line-height:        1.75;
-    color:              orange;
+    color:              #c24a0c;
 }
 
 #level_shapes {
-    height: 20px;
-    margin:     auto;
+    height:     40px;
+    margin:     0 auto;
 }
 
 #level_select {
@@ -62,57 +108,48 @@ body {
     text-align: center;
     position: relative;
     width: 100%;
+    display: inline-block;
 }
 
 .arrow {
-    width: 0;
-    height: 0;
-    border-top:     20px solid transparent;
-    border-bottom:  20px solid transparent;
-    cursor: pointer;
+    cursor:             pointer;
+    /* background-color:   blue; */
+    display:            inline-block;
 }
 
 #arrow_left {
-    border-left:    20px solid transparent;
-    border-right:   20px solid black;
-    display:inline-block;
-    position: relative;
-    top: -15px;
-    left: -21px;
+    display:        inline-block;
+    position:       relative;
+    height:         40px;
+    margin-right:   0px;
+    -webkit-filter: drop-shadow(0px 3px 6px #222);
+    filter:         drop-shadow(0px 3px 6px #222);
 }
 
 #arrow_right {
-    border-left:    20px solid black;
-    border-right:   20px solid transparent;
-    display: inline-block;
-    position: relative;
-    top: -14px;
-    left: 21px;
-}
-
-#level_bar {
-    height: 2px;
-    width: 25%;
-    background-color: black;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 16.25px;
-    width: 185px;
-    display:inline-block;
-    position: relative;
-    top: -18px;
+    display:        inline-block;
+    position:       relative;
+    height:         40px;
+    margin-left:    0px;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+    -webkit-filter: drop-shadow(0px -3px 6px #222);
+    filter:         drop-shadow(0px -3px 6px #222);
 }
 
 #selected_level {
+    width:          198px;
+    display:        inline-block;
+    position:       relative;
+    top: -9px;
     font-size: 32px;
     height: 25px;
     line-height: 0.675;
     margin-bottom: 13.5px;
-}
-
-#level_desc {
-    font-size: 24px;
-    margin-top: 0px;
-    /* background-color: red; */
-    line-height: 0.675;
+    color: white;
+    text-shadow:    0px 3px 6px #222;
+    /* background-color: green; */
 }

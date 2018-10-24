@@ -12,16 +12,20 @@
 <div id="cover"></div>
 <div id="container">
     <div id="note_bar">
-        <div class="vert_bar" id="left_bar"></div>
-        <div id="middle_bar"></div>
-        <div id="horiz_bar"></div>
-        <div class="vert_bar" id="right_bar"></div>
+        <div class="vert_bar bar" id="left_bar"></div>
+        <div class="bar" id="middle_bar"></div>
+        <div class="horiz_bar bar" id="horiz_bar_1"></div>
+        <div class="horiz_bar bar" id="horiz_bar_2"></div>
+        <div class="horiz_bar bar" id="horiz_bar_3"></div>
+        <div class="vert_bar bar" id="right_bar"></div>
+        <div id="feedback_text"></div>
     </div>
     <div id="drum">
-        <div id="hand"></div>
+        <img id="drum_ill" src = "assets/images/drum.svg">
+        <img id="drum_stick" src = "assets/images/drum_stick.svg">
     </div>
     <div id="instruction_popup" class = "popup">
-        <div class="popup_close"></div>
+        <img class="popup_close" src="assets/images/x.svg">
         <div class="popup_title">Lorem ipsum</div>
         <p class="popup_body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
@@ -34,7 +38,6 @@
             <a href="game.html"><li class="end">Try Again</li></a>
         </ul>
     </div>
-    <div id="repeat_after_me">Repeat after me!</div>
     <ul id="menu">
         <li id="metro_menu"><span>Metronome</span>
             <label class="switch">
@@ -45,6 +48,14 @@
         <a href="game.html"><li>Restart Level</li></a>
         <a href="index.html"><li>Change Level</li></a>
     </ul>
+    <img src="assets/images/note_black.svg" style="display:none">
+    <img src="assets/images/rest_black.svg" style="display:none">
+    <img src="assets/images/note_red.svg" style="display:none">
+    <img src="assets/images/rest_red.svg" style="display:none">
+    <img src="assets/images/note_green.svg" style="display:none">
+    <img src="assets/images/rest_green.svg" style="display:none">
+    <img src="assets/images/note_orange.svg" style="display:none">
+    <img src="assets/images/rest_orange.svg" style="display:none">
 
 </div>
 </body>

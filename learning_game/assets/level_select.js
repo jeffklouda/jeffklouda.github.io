@@ -1,10 +1,10 @@
 $(document).ready(function() {
     var level = 1;
-    var max_level = 3;
+    var max_level = 10;
     var desc;
     localStorage.setItem("level", 1);
     $('.arrow').click (function() {
-        if ($(this).attr('id') == 'arrow_left') {
+        if ($(this).attr('id') == 'arr_left') {
             level--;
         } else {
             level++;
