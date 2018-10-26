@@ -27,7 +27,7 @@ var game_level;
 var can_hit_drum;
 var level_presets = [
     ['nrnrnrnr', 'nrnrnrnr', 'nrnrnrnr'],
-    ['nrnrnrnrnrnrnrnr', 'nrnrnrnrnrnrnrnr', 'nrnrnrnrrnnnrnnr'],
+    ['nrnrnrnrnrnrnrnr', 'nrnrnrnrnrnrnrnr', 'nrnrnrnrnrnrnrnr'],
 ];
 
 function BufferLoader(context, urlList, callback) {
@@ -84,7 +84,7 @@ function playSound(buffer, time) {
     source.start(time);
 }
 
-window.addEventListener('load', init, false);
+//window.addEventListener('load', init, false);
 
 function init() {
     try {
@@ -202,7 +202,7 @@ class Game {
             this.activeNotes.push(new Note(note_type, loc));
             loc += (time_per_beat * px_speed) / 2;
         }
-        play_metronome(time);
+        play_metronome(time/1000);
     }
     playUser(loc, notes, time) {
         setTimeout(function(){
@@ -219,21 +219,21 @@ class Game {
             this.activeNotes.push(new Note(note_type, loc));
             loc += (time_per_beat * px_speed) / 2;
         }
-        play_metronome(time);
+        play_metronome(time/1000);
     }
     start(level) {
         //TODO change back to this.level = level
         //TODO metronome and notes are not lined up
         this.level = 1;
         var loc = center + 8 * time_per_beat * px_speed;
-        var time = context.currentTime;
+        var time = context.currentTime * 1000;
         for (var i = 0; i < 3; i++) {
             this.playAuto(loc, level_presets[this.level][i], time);
             loc += 16 * time_per_beat * px_speed;
-            time += 32 * eight_note_time;
+            time += 16 * time_per_beat;
             this.playUser(loc, level_presets[this.level][i], time);
             loc += 16 * time_per_beat * px_speed;
-            time += 32 * eight_note_time;
+            time += 16 * time_per_beat;
         }
     }
     update(delta) {
@@ -324,17 +324,16 @@ $(document).ready(function() {
     center = Number($("#horiz_bar_2").css("left").replace('px', ''));
     center += Number($("#horiz_bar_2").css("width").replace('px', '')) / 2;
     note_bar = document.getElementById("note_bar");
-    /*try {
+    try {
         game_level = localStorage.getItem("level");
     } catch {
         alert("Level loader fail");
         game_level = 1;
-    }*/
+    }
     game_level = 1;
-    $("#drum_stick").css("-webkit-animation-play-state", "paused");
     can_hit_drum = false;
     // Changes based on level
-    bpm = 90;
+    bpm = 100;
     time_per_beat = 60000 / bpm;
     px_speed = ((right - left) * bpm) / 540000;
     eight_note_time = (60 / bpm) / 2;
@@ -352,6 +351,7 @@ $(document).ready(function() {
     });
 
     $("#start_game_popup").click(function () {
+        init();
         $(this).hide();
         run_game();
     })
