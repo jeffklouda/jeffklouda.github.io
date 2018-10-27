@@ -84,7 +84,7 @@ function playSound(buffer, time) {
     source.start(time);
 }
 
-//window.addEventListener('load', init, false);
+window.addEventListener('load', init, false);
 
 function init() {
     try {
@@ -297,10 +297,11 @@ function game_loop(timestamp) {
         delta = timestamp - lastFrameTimeMs;
     }
     lastFrameTimeMs = timestamp;
+
     if (!game.update(delta)) {
-            $("#score").html("Your Score: " + (score/total_score * 100) + '%')
-            $("#end_game_popup").show();
-            return;
+        $("#score").html("Your Score: " + Math.round(score/total_score * 100) + '%')
+        $("#end_game_popup").show();
+        return;
     }
     requestAnimationFrame(game_loop);
 }
@@ -351,7 +352,7 @@ $(document).ready(function() {
     });
 
     $("#start_game_popup").click(function () {
-        init();
+        //init();
         $(this).hide();
         run_game();
     })
