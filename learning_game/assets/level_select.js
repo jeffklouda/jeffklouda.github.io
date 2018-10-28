@@ -1,6 +1,6 @@
 $(document).ready(function() {
     var level = 1;
-    var max_level = 10;
+    var max_level = 5;
     var desc;
     localStorage.setItem("level", 1);
     $('.arrow').click (function() {

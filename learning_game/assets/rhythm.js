@@ -26,8 +26,11 @@ var total_score = 0;
 var game_level;
 var can_hit_drum;
 var level_presets = [
-    ['nrnrnrnr', 'nrnrnrnr', 'nrnrnrnr'],
     ['nrnrnrnrnrnrnrnr', 'nrnrnrnrnrnrnrnr', 'nrnrnrnrnrnrnrnr'],
+    ['nnnnnnnnnnnnnnnn', 'nrnrnnnnnrnrnnnn', 'nnnnnrnrnnnnnrnr'],
+    ['nnrnnnrnnnrnnnrn', 'nrnnnrnnnrnnnrnn', 'nrrnnrrnnrrnnrrn'],
+    ['rnrnrnrnnrnrnnrn', 'rnnrrnnnrrnrrnrn', 'rnrrnnrnrnrrnnrn'],
+    ['rnrnrnnnrrnrrrnr', 'rnrnnrrnrrrrrrnr', 'nnnrnnrnrnnrnrrn']
 ];
 
 function BufferLoader(context, urlList, callback) {
@@ -159,7 +162,7 @@ class Note {
 function animate_drum() {
     playSound(snare_buffer, 0);
     var stick = $("#drum_stick");
-    stick.animate({top: '-33px'}, 5);
+    stick.animate({top: '-33px'}, 0);
     stick.animate({top: '-83px'}, 200);
 }
 
@@ -224,7 +227,7 @@ class Game {
     start(level) {
         //TODO change back to this.level = level
         //TODO metronome and notes are not lined up
-        this.level = 1;
+        this.level = level-1;
         var loc = center + 8 * time_per_beat * px_speed;
         var time = context.currentTime * 1000;
         for (var i = 0; i < 3; i++) {
@@ -281,7 +284,7 @@ class Game {
                     }
                 } else {
                     $("#feedback_text").css("color", "#b82125");
-                    $("#feedback_text").html("What should this say?");
+                    $("#feedback_text").html("Off Beat!");
                     score -= 0.5;
                 }
             }
@@ -331,10 +334,10 @@ $(document).ready(function() {
         alert("Level loader fail");
         game_level = 1;
     }
-    game_level = 1;
+    console.log(game_level);
     can_hit_drum = false;
     // Changes based on level
-    bpm = 100;
+    bpm = 80 + 10 * game_level;
     time_per_beat = 60000 / bpm;
     px_speed = ((right - left) * bpm) / 540000;
     eight_note_time = (60 / bpm) / 2;
@@ -352,7 +355,6 @@ $(document).ready(function() {
     });
 
     $("#start_game_popup").click(function () {
-        //init();
         $(this).hide();
         run_game();
     })
