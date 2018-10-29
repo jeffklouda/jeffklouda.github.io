@@ -168,11 +168,18 @@ function animate_drum() {
     playSound(snare_buffer, 0);
     var stick = $("#drum_stick");
     stick.animate({top: '-33px'}, 0);
-    stick.animate({top: '-83px'}, 100);
+    stick.animate({top: '-83px'}, 75);
+}
+
+function animate_drum_gray() {
+    playSound(snare_buffer, 0);
+    var stick = $("#drum_stick_gray");
+    stick.animate({top: '-33px'}, 0);
+    stick.animate({top: '-83px'}, 75);
 }
 
 function auto_drum() {
-    animate_drum();
+    animate_drum_gray();
     var len = game.activeNotes.length;
     var hit_flag = false; // if a note has been hit
     for (var i = 0; i < len; i++) {
@@ -210,9 +217,13 @@ class Game {
     }
     playAuto(loc, notes, time) {
         setTimeout(function(){
-            $("#feedback_text").html("Repeat after me!");
+            $("#feedback_text").html("Listen First!");
             $("#feedback_text").css("color", "#000");
             can_hit_drum = false;
+            $("#drum_ill").fadeOut();
+            $("#drum_ill_gray").fadeIn();
+            $("#drum_stick").fadeOut();
+            $("#drum_stick_gray").fadeIn();
             }, (loc - center)/ px_speed - 8 * time_per_beat
         );
         for (var i = 0; i < notes.length; i++) {
@@ -229,9 +240,13 @@ class Game {
     }
     playUser(loc, notes, time) {
         setTimeout(function(){
-            $("#feedback_text").html("Your turn!");
+            $("#feedback_text").html("Now Repeat!");
             $("#feedback_text").css("color", "#000");
             can_hit_drum = true;
+            $("#drum_ill").fadeIn();
+            $("#drum_ill_gray").fadeOut();
+            $("#drum_stick").fadeIn();
+            $("#drum_stick_gray").fadeOut();
             }, (loc - center)/ px_speed - 8 * time_per_beat
         );
         for (var i = 0; i < notes.length; i++) {
@@ -285,8 +300,8 @@ class Game {
                 this.activeNotes[i].x > center - note_width &&
                 this.activeNotes[i].x < center + note_width) {
                 hit_flag = true;
-                if (this.activeNotes[i].x > center - note_width/2 &&
-                    this.activeNotes[i].x < center + note_width/2 &&
+                if (this.activeNotes[i].x > center - note_width/1.5 &&
+                    this.activeNotes[i].x < center + note_width/1.5 &&
                     this.activeNotes[i].type == 'n') {
                     $("#feedback_text").html("Perfect!");
                     $("#feedback_text").css("color", "#42ba51")
@@ -386,6 +401,10 @@ $(document).ready(function() {
     $("#start_game_popup").click(function () {
         $(this).hide();
         $("#cover").hide();
+        $("#drum_ill").fadeOut();
+        $("#drum_ill_gray").fadeIn();
+        $("#drum_stick").fadeOut();
+        $("#drum_stick_gray").fadeIn();
         run_game();
     });
 

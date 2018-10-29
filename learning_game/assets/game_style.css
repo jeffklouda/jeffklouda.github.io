@@ -92,7 +92,7 @@ ul {
     font-family: canada-type-gibson, sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 21px;
     margin-top: 6px;
     text-align: center;
 }
@@ -101,16 +101,16 @@ ul {
     color: white;
     font-family: canada-type-gibson, sans-serif;
     font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
+    font-weight: 300;
+    font-size: 18px;
     line-height: 1.5;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     width: 80%;
-    margin: 18px auto 0 auto;
+    margin: 8px auto 0 auto;
 }
 
 .body_img {
-    height: 18px;
+    height: 21px;
     margin: 0 5px;
     position: relative;
     top: 4px;
@@ -163,7 +163,7 @@ ul {
 #horiz_bar_3 {top: 202px;}
 
 .drum_popup {
-    height:             171px;
+    height:             180px;
     width:              238px;
     background-color:   #2d2d41;
     border-radius:      10px;
@@ -181,7 +181,7 @@ ul {
     font-style: normal;
     font-weight: 600;
     font-size: 24px;
-    line-height: 6;
+    line-height:7;
     letter-spacing: 0.5px;
     text-align: center;
     cursor: pointer;
@@ -216,9 +216,7 @@ ul {
 }
 
 #start_menu {
-    position: absolute;
-    top: 300px;
-    left: 88px;
+    margin-top: 24px;
 }
 
 .start {
@@ -249,7 +247,7 @@ li {
     border-radius:  8px;
     box-shadow:     0px 3px 6px #222;
     margin: 10px 0;
-    padding: 0 0 0 20px;
+    text-align: center;
     color: #b61c14;
     font-size:      18px;
     line-height: 1.25;
@@ -279,6 +277,30 @@ li {
 }
 
 #drum_ill {
+    position: absolute;
+    height: 248px;
+    top: 0;
+    left: 0;
+    margin:     0 auto;
+    -webkit-filter: drop-shadow(0px 3px 6px #222);
+    filter:         drop-shadow(0px 3px 6px #222);
+}
+
+#drum_stick_gray {
+    display: none;
+    height: 195px;
+    position: absolute;
+    transform: rotate(-120deg);
+    top: -83px;
+    left: 198px;
+}
+
+#drum_ill_gray {
+    display: none;
+    position: absolute;
+    height: 248px;
+    top: 0;
+    left: 0;
     margin:     0 auto;
     -webkit-filter: drop-shadow(0px 3px 6px #222);
     filter:         drop-shadow(0px 3px 6px #222);
