@@ -12,12 +12,14 @@ var game;
 var note_width  = 23;
 var note_height = 89;
 var rest_height = 46;
+var vis_offset = 10;
 var note_offset = 11;
 var rest_offset = 0;
 var note_bar;
 var snare_buffer;
 var metro1_buffer;
 var metro2_buffer;
+var metronome_on;
 var context;
 var bufferLoader;
 var eight_note_time;
@@ -27,10 +29,10 @@ var game_level;
 var can_hit_drum;
 var level_presets = [
     ['nrnrnrnrnrnrnrnr', 'nrnrnrnrnrnrnrnr', 'nrnrnrnrnrnrnrnr'],
-    ['nnnnnnnnnnnnnnnn', 'nrnrnnnnnrnrnnnn', 'nnnnnrnrnnnnnrnr'],
+    ['nnnrnnnrnnnrnnnr', 'nrnrnnnnnrnrnnnn', 'nnnnnrnrnnnnnrnr'],
     ['nnrnnnrnnnrnnnrn', 'nrnnnrnnnrnnnrnn', 'nrrnnrrnnrrnnrrn'],
     ['rnrnrnrnnrnrnnrn', 'rnnrrnnnrrnrrnrn', 'rnrrnnrnrnrrnnrn'],
-    ['rnrnrnnnrrnrrrnr', 'rnrnnrrnrrrrrrnr', 'nnnrnnrnrnnrnrrn']
+    ['rnrnrnnnrrnrrrnr', 'rnrnnrrnrrrrrrnr', 'nnnrnnrnrnnrnrnr']
 ];
 
 function BufferLoader(context, urlList, callback) {
@@ -121,7 +123,7 @@ function finishedLoading(bufferList) {
 class Note {
     constructor (type, x) {
         this.type = type;
-        this.x = x;
+        this.x = x - vis_offset;
         this.y = note_y;
         this.clicked = false;
         this.html = document.createElement("img");
@@ -147,13 +149,15 @@ class Note {
     update(elapsed_mS) {
         // Move across screen in 8 beats
         this.x = this.x - (elapsed_mS * px_speed);
-        this.html.style.left = (this.x - this.offset) + 'px';
         if (!this.vis_flag && this.x < right + this.offset) {
             this.vis_flag = true;
             this.html.style.display = 'block';
         } else if (this.x < left + this.offset - this.width) {
             this.html.style.display = 'none';
             return false;
+        }
+        if (this.vis_flag){
+            this.html.style.left = (this.x - this.offset) + 'px';
         }
         return true;
     }
@@ -163,12 +167,12 @@ function animate_drum() {
     playSound(snare_buffer, 0);
     var stick = $("#drum_stick");
     stick.animate({top: '-33px'}, 0);
-    stick.animate({top: '-83px'}, 200);
+    stick.animate({top: '-83px'}, 100);
 }
 
 function play_metronome(start_time) {
     var bars;
-    if ($(metro_check).is(':checked')) {
+    if (metronome_on) {
         bars = 4;
     }
     else {
@@ -252,7 +256,9 @@ class Game {
             }
         }
         if (remove_flag) {
-            note_bar.removeChild(this.activeNotes.shift().html);
+            //note_bar.removeChild(this.activeNotes.shift().html);
+            this.activeNotes.shift().html.style.display = 'none';
+            i -= 1;
         }
         return true;
     }
@@ -303,6 +309,7 @@ function game_loop(timestamp) {
 
     if (!game.update(delta)) {
         $("#score").html("Your Score: " + Math.round(score/total_score * 100) + '%')
+        $("#feedback_text").html("");
         $("#end_game_popup").show();
         return;
     }
@@ -330,14 +337,22 @@ $(document).ready(function() {
     note_bar = document.getElementById("note_bar");
     try {
         game_level = localStorage.getItem("level");
+        metronome_on = localStorage.getItem("metronome_on");
     } catch {
         alert("Level loader fail");
         game_level = 1;
+        metronome_on = true;
     }
-    console.log(game_level);
+    console.log(metronome_on);
+    if (metronome_on) {
+        $("#metro_menu").html("Metronome: On");
+    } else {
+        $("#metro_menu").html("Metronome: Off");
+    }
+    $("#restart_menu").html("Restart Level " + game_level);
     can_hit_drum = false;
     // Changes based on level
-    bpm = 80 + 10 * game_level;
+    bpm = 80 + 5 * game_level;
     time_per_beat = 60000 / bpm;
     px_speed = ((right - left) * bpm) / 540000;
     eight_note_time = (60 / bpm) / 2;
@@ -357,17 +372,28 @@ $(document).ready(function() {
     $("#start_game_popup").click(function () {
         $(this).hide();
         run_game();
-    })
-
-    $("#metro_menu").click(function () {
-        var checkBox = $("#metro_check");
-        checkBox.prop("checked", !checkBox.prop("checked"));
     });
 
     $("#drum").click(function () {
         if (can_hit_drum) {
-            animate_drum();
             game.hit_drum();
+            animate_drum();
+        }
+    });
+
+    $(".restart").click(function () {
+        location.reload();
+    });
+
+    $("#metro_menu").click(function () {
+        if (metronome_on) {
+            $("#metro_menu").html("Metronome: Off");
+            metronome_on = false;
+            localStorage.setItem("metronome_on", false);
+        } else {
+            $("#metro_menu").html("Metronome: On");
+            metronome_on = true;
+            localStorage.setItem("metronome_on", true);
         }
     });
 

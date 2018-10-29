@@ -1,8 +1,12 @@
 $(document).ready(function() {
-    var level = 1;
     var max_level = 5;
     var desc;
-    localStorage.setItem("level", 1);
+    var level = localStorage.getItem("level");
+    if (!temp) {localStorage.setItem("level", 1);}
+    var temp = localStorage.getItem("metronome_on");
+    if (!temp) {localStorage.setItem("metronome_on", true);}
+    $('#selected_level').html('Level ' + level);
+
     $('.arrow').click (function() {
         if ($(this).attr('id') == 'arr_left') {
             level--;
