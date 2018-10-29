@@ -12,7 +12,7 @@ var game;
 var note_width  = 23;
 var note_height = 89;
 var rest_height = 46;
-var vis_offset = 10;
+var vis_offset = 0;
 var note_offset = 11;
 var rest_offset = 0;
 var note_bar;
