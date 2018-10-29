@@ -26,13 +26,14 @@ var eight_note_time;
 var score = 0;
 var total_score = 0;
 var game_level;
+var max_level = 5;
 var can_hit_drum;
 var level_presets = [
     ['nrnrnrnrnrnrnrnr', 'nrnrnrnrnrnrnrnr', 'nrnrnrnrnrnrnrnr'],
-    ['nnnrnnnrnnnrnnnr', 'nrnrnnnnnrnrnnnn', 'nnnnnrnrnnnnnrnr'],
+    ['nnnrnnnrnnnrnnnr', 'nrnrnnnrnrnrnnnn', 'nnnnnrnrnnnnnrnr'],
     ['nnrnnnrnnnrnnnrn', 'nrnnnrnnnrnnnrnn', 'nrrnnrrnnrrnnrrn'],
     ['rnrnrnrnnrnrnnrn', 'rnnrrnnnrrnrrnrn', 'rnrrnnrnrnrrnnrn'],
-    ['rnrnrnnnrrnrrrnr', 'rnrnnrrnrrrrrrnr', 'nnnrnnrnrnnrnrnr']
+    ['rnrnrnnnrrnrrrnr', 'rnrnnrrnrrrrrnnr', 'nnnrnnrnrnnrnrnr']
 ];
 
 function BufferLoader(context, urlList, callback) {
@@ -170,6 +171,21 @@ function animate_drum() {
     stick.animate({top: '-83px'}, 100);
 }
 
+function auto_drum() {
+    animate_drum();
+    var len = game.activeNotes.length;
+    var hit_flag = false; // if a note has been hit
+    for (var i = 0; i < len; i++) {
+        if (!hit_flag && !game.activeNotes[i].clicked &&
+        game.activeNotes[i].type == 'n' &&
+        game.activeNotes[i].x > center - note_width &&
+        game.activeNotes[i].x < center + note_width) {
+            game.activeNotes[i].clicked = true;
+            game.activeNotes[i].html.src = "assets/images/note_green.svg";
+        }
+    }
+}
+
 function play_metronome(start_time) {
     var bars;
     if (metronome_on) {
@@ -203,8 +219,8 @@ class Game {
             var note_type = notes.charAt(i);
             if (note_type == 'n') {
                 setTimeout(function(){
-                    animate_drum();
-                }, (loc - center)/px_speed);
+                    auto_drum();
+                }, (loc - center - note_offset/2)/px_speed);
             }
             this.activeNotes.push(new Note(note_type, loc));
             loc += (time_per_beat * px_speed) / 2;
@@ -256,7 +272,6 @@ class Game {
             }
         }
         if (remove_flag) {
-            //note_bar.removeChild(this.activeNotes.shift().html);
             this.activeNotes.shift().html.style.display = 'none';
             i -= 1;
         }
@@ -311,6 +326,7 @@ function game_loop(timestamp) {
         $("#score").html("Your Score: " + Math.round(score/total_score * 100) + '%')
         $("#feedback_text").html("");
         $("#end_game_popup").show();
+        $("#cover").show();
         return;
     }
     requestAnimationFrame(game_loop);
@@ -335,71 +351,48 @@ $(document).ready(function() {
     center = Number($("#horiz_bar_2").css("left").replace('px', ''));
     center += Number($("#horiz_bar_2").css("width").replace('px', '')) / 2;
     note_bar = document.getElementById("note_bar");
-    try {
-        game_level = localStorage.getItem("level");
-        metronome_on = localStorage.getItem("metronome_on");
-    } catch {
-        alert("Level loader fail");
-        game_level = 1;
-        metronome_on = true;
-    }
-    console.log(metronome_on);
-    if (metronome_on) {
-        $("#metro_menu").html("Metronome: On");
-    } else {
-        $("#metro_menu").html("Metronome: Off");
-    }
+    var path = window.location.pathname;
+    var page = path.split("/").pop();
+    game_level = Number(page[4]);
+    metronome_on = true;
     $("#restart_menu").html("Restart Level " + game_level);
     can_hit_drum = false;
-    // Changes based on level
-    bpm = 80 + 5 * game_level;
+    // BPM changes based on level
+    bpm = 75 + 10 * Math.floor((game_level+1)/2);
+    console.log(bpm);
     time_per_beat = 60000 / bpm;
     px_speed = ((right - left) * bpm) / 540000;
     eight_note_time = (60 / bpm) / 2;
     game = new Game();
 
+    $(".start").click(function () {
+        if ($(this).attr('id') == "metro_off") {
+            console.log($(this).attr('id'));
+            metronome_on = false;
+        } else {
+            metronome_on = true;
+        }
+        $(this).parent().parent().hide();
+        $("#start_game_popup").show();
+        $("#cover").show();
+    });
+
     $(".popup_close").click(function () {
         $(this).parent().hide();
         $("#start_game_popup").show();
-        $("#cover").hide();
-    });
-
-    $("#cover").click(function () {
-        $(".popup_close").click();
-        $(this).hide();
+        $("#cover").show();
     });
 
     $("#start_game_popup").click(function () {
         $(this).hide();
+        $("#cover").hide();
         run_game();
     });
 
     $("#drum").click(function () {
         if (can_hit_drum) {
-            game.hit_drum();
             animate_drum();
-        }
-    });
-
-    $(".restart").click(function () {
-        location.reload();
-    });
-
-    $("#metro_menu").click(function () {
-        if (metronome_on) {
-            $("#metro_menu").html("Metronome: Off");
-            metronome_on = false;
-            localStorage.setItem("metronome_on", false);
-        } else {
-            $("#metro_menu").html("Metronome: On");
-            metronome_on = true;
-            localStorage.setItem("metronome_on", true);
-        }
-    });
-
-    $(document).keypress(function(e) {
-        if (e.which == 32) {
-            $("#drum").click();
+            game.hit_drum();
         }
     });
 });

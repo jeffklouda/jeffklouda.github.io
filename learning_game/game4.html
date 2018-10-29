@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="assets/game_style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="assets/rhythm.js"></script>
-    <title>Rhythm Game</title>
+    <title>Keep the Beat!</title>
 </head>
 <body>
 <div id="cover"></div>
@@ -20,27 +20,35 @@
         <div class="vert_bar bar" id="right_bar"></div>
         <div id="feedback_text"></div>
     </div>
-    <div id="drum">
+    <button type="button" id="drum">
         <img id="drum_ill" src = "assets/images/drum.svg">
         <img id="drum_stick" src = "assets/images/drum_stick.svg">
-    </div>
+    </button>
     <div id="instruction_popup" class = "popup">
         <img class="popup_close" src="assets/images/x.svg">
-        <div class="popup_title">Lorem ipsum</div>
-        <p class="popup_body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div class="popup_title">Level 4</div>
+        <p class="popup_body">
+            Now you can tackle any eighth note rhythm!<br><br>
+            Consider trying this level without the metronome. Keep counting
+            “1 and 2 and 3 and 4 and…” when the metronome stops to make sure
+            you can keep the beat!
+        </p>
+        <ul id="start_menu">
+            <li id="metro_on" class="start">Start with metronome</li>
+            <li id="metro_off" class="start">Start without metronome</li>
+        </ul>
     </div>
-    <div id="start_game_popup" class="drum_popup popup">Click here to start!</div>
+    <div id="start_game_popup" class="drum_popup popup">Tap here to start!</div>
     <div id="end_game_popup" class="drum_popup popup">
         <ul id="end_menu">
             <p class="popup_title">Great Work!</p>
             <p id="score" class="popup_title">Your Score: </p>
-            <a href="game.html"><li class="end">Next Level</li></a>
-            <a href="game.html"><li class="end">Try Again</li></a>
+            <a href="game5.html"><li class="end">Next Level</li></a>
+            <a href="game4.html"><li class="end">Try Again</li></a>
         </ul>
     </div>
     <ul id="menu">
-        <li id="metro_menu"><span>Metronome</span></li>
-        <li id="restart_menu" class="restart">Restart Level</li>
+        <a href="game4.html"><li>Restart Level</li></a>
         <a href="index.html"><li>Change Level</li></a>
     </ul>
     <img src="assets/images/note_black.svg" style="display:none">

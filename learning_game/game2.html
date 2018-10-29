@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<head>
+    <link rel="stylesheet" href="https://use.typekit.net/gur3hpx.css">
+    <link rel="stylesheet" href="assets/game_style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="assets/rhythm.js"></script>
+    <title>Keep the Beat!</title>
+</head>
+<body>
+<div id="cover"></div>
+<div id="container">
+    <div id="note_bar">
+        <div class="vert_bar bar" id="left_bar"></div>
+        <div class="bar" id="middle_bar"></div>
+        <div class="horiz_bar bar" id="horiz_bar_1"></div>
+        <div class="horiz_bar bar" id="horiz_bar_2"></div>
+        <div class="horiz_bar bar" id="horiz_bar_3"></div>
+        <div class="vert_bar bar" id="right_bar"></div>
+        <div id="feedback_text"></div>
+    </div>
+    <button type="button" id="drum">
+        <img id="drum_ill" src = "assets/images/drum.svg">
+        <img id="drum_stick" src = "assets/images/drum_stick.svg">
+    </button>
+    <div id="instruction_popup" class = "popup">
+        <img class="popup_close" src="assets/images/x.svg">
+        <div class="popup_title">Level 2</div>
+        <p class="popup_body">
+            In this level, some of the notes are not on the beat. This
+            <img class="body_img" src="assets/images/note_white.svg"> is an
+            eighth note. In this game that means it is one-half-beat long, so
+            you can play two of them per beat!<br><br>
+            Some of the notes in this level are between beats. Remember that
+            each click of the metronome is one beat. Try to count “one, two,
+            three, four, one, two three four” along with the metronome to get a
+            feel for the beat!
+        </p>
+        <ul id="start_menu">
+            <li id="metro_on" class="start">Start with metronome</li>
+            <li id="metro_off" class="start">Start without metronome</li>
+        </ul>
+    </div>
+    <div id="start_game_popup" class="drum_popup popup">Tap here to start!</div>
+    <div id="end_game_popup" class="drum_popup popup">
+        <ul id="end_menu">
+            <p class="popup_title">Great Work!</p>
+            <p id="score" class="popup_title">Your Score: </p>
+            <a href="game3.html"><li class="end">Next Level</li></a>
+            <a href="game2.html"><li class="end">Try Again</li></a>
+        </ul>
+    </div>
+    <ul id="menu">
+        <a href="game2.html"><li>Restart Level</li></a>
+        <a href="index.html"><li>Change Level</li></a>
+    </ul>
+    <img src="assets/images/note_black.svg" style="display:none">
+    <img src="assets/images/rest_black.svg" style="display:none">
+    <img src="assets/images/note_red.svg" style="display:none">
+    <img src="assets/images/rest_red.svg" style="display:none">
+    <img src="assets/images/note_green.svg" style="display:none">
+    <img src="assets/images/rest_green.svg" style="display:none">
+    <img src="assets/images/note_orange.svg" style="display:none">
+    <img src="assets/images/rest_orange.svg" style="display:none">
+
+</div>
+</body>
+</html>
