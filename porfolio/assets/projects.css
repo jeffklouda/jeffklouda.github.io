@@ -1,0 +1,142 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+/************************/
+/*  Header              */
+/************************/
+
+nav {
+    position: fixed;
+    height: 3rem;
+    width: 100%;
+    padding-left: 5%;
+    background-color: #fff;
+    z-index: 1;
+}
+
+@media only screen and (min-width: 961px) {
+nav {
+    padding-left: 3rem;
+}
+}
+
+nav div {
+    display: inline-flex;
+}
+nav a {
+    text-decoration: none;
+    color: #000;
+    font-size: 1rem;
+    line-height: 2.75rem;
+}
+
+#home {
+    font-family: gill-sans-nova, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 1rem;
+}
+.nav_link a{
+    font-family: mrs-eaves-xl-serif, serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1rem;
+    margin-left: 0.25rem;
+    color: #444;
+}
+.nav_link a:hover {
+    color: #000;
+}
+
+/************************/
+/* Container            */
+/************************/
+
+#container {
+    background-color: #f3f3f3;
+    margin: 0 5%;
+}
+
+@media only screen and (min-width: 961px) {
+    #container {
+        margin: 0 3rem;
+    }
+}
+
+/************************/
+/* Intro Text           */
+/************************/
+
+#intro_text {
+    font-family: gill-sans-nova, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    padding: 0 10%;
+    height: 90vh;
+    font-size: 1rem;
+}
+
+@media only screen and (min-width: 961px) {
+    #intro_text {
+        padding: 0;
+        width: 50%;
+        margin: 0 auto;
+    }
+}
+
+#intro_text h1 {
+    font-family: gill-sans-nova, sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 2rem;
+    padding-top: 40vh;
+}
+
+/************************/
+/*  projects            */
+/************************/
+.relative {
+    position: relative;
+}
+.proj_img {
+    width: 100%;
+}
+.desc {
+    position: absolute;
+    bottom: 10%;
+    left: 8%;
+}
+.proj_desc {
+    font-family: mrs-eaves-xl-serif, serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: white;
+}
+.proj_title {
+    font-family: gill-sans-nova, sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 2rem;
+    color: white;
+}
+
+@media only screen and (min-width: 961px) {
+    .proj_row {
+        display: flex;
+        justify-content: space-around;
+    }
+    .project {
+        width: 33%;
+    }
+}
+
+/************************/
+/*  footer              */
+/************************/
+footer {
+    height: 2rem;
+}
