@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://use.typekit.net/sio4lfk.css">
     <link rel="stylesheet" type="text/css" href="assets/projects.css">
+    <script src="assets/projects.js"></script>
     <meta name='viewport'
       content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
 </head>
@@ -13,9 +14,21 @@
 <body>
     <nav>
         <div id="home"><a href="#">Jeff Klouda</a></div>
+        <input id="toggle" type="checkbox">
+        <label class="toggle-container" for="toggle">
+        <span class="button button-toggle">
+            <div id="menu_icon" onclick="toggleMenu(this)">
+                <div class="bar bar1"></div>
+                <div class="bar bar2"></div>
+                <div class="bar bar3"></div>
+            </div>
+        </span>
+        </label>
+        <div id="nav_menu">
         <div class="nav_link"><a href="#">projects</a></div>
         <div class="nav_link"><a href="#">about</a></div>
         <div class="nav_link"><a href="#">contact</a></div>
+        </div>
     </nav>
     <div id="container">
         <div id="intro_text">
