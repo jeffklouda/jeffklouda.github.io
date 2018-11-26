@@ -268,7 +268,7 @@ input:not(:checked) ~ #collapse_menu {
         line-height: 1;
     }
     .project {
-        /* width: 33%; */
+        width: 100%;
     }
 }
 
