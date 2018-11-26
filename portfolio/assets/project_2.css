@@ -3,7 +3,7 @@
 /************************/
 
 nav {
-    background-color: #294398;
+    background-color: #ff5651;
 }
 
 /************************/
@@ -11,25 +11,19 @@ nav {
 /************************/
 
 #intro {
-    background-color: #294398;
+    background-color: #ff5651;
 }
 
 .subtitle {
-    color: #8492f3;
+    color: #ffb1af;
 }
 
 .sec_title {
-    color: #8492f3;
-}
-
-
-.book_layout {
-    width: 100%;
-    height: 100%;
+    color: #ffb1af;
 }
 
 @media only screen and (min-width: 961px) {
     .final_proj_img {
-        width: 50%;
+        width: 45%;
     }
 }

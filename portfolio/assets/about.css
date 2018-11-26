@@ -131,7 +131,7 @@ input:not(:checked) ~ #collapse_menu {
 }
 
 #nav_menu.change{
-    height: 15rem;
+    height: 10rem;
     width: 100%;
     background: #fff;
     transition: 0.5s;
@@ -188,14 +188,13 @@ input:not(:checked) ~ #collapse_menu {
     font-family: gill-sans-nova, sans-serif;
     font-weight: 400;
     font-style: normal;
-    padding: 0 10%;
-    height: 90vh;
+    padding: 30vh 10%;
     font-size: 1rem;
 }
 
 @media only screen and (min-width: 961px) {
     #intro_text {
-        padding: 0;
+        padding: 30vh 0;
         width: 60%;
         margin: 0 auto;
         font-size: 3vh;
@@ -207,7 +206,13 @@ input:not(:checked) ~ #collapse_menu {
     font-weight: 800;
     font-style: normal;
     font-size: 2rem;
-    padding-top: 40vh;
+}
+
+.label {
+    font-family: mrs-eaves-xl-serif, serif;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5;
 }
 
 @media only screen and (min-width: 961px) {
@@ -216,60 +221,13 @@ input:not(:checked) ~ #collapse_menu {
     }
 }
 
-/************************/
-/*  projects            */
-/************************/
-.project {
-    line-height: 0;
+.space {
+    margin-bottom: 2rem;
 }
-.relative {
-    position: relative;
-}
-.proj_img {
+
+iframe {
     width: 100%;
-    transition: 0.3s;
-}
-
-.proj_img:hover {
-    -webkit-filter: brightness(0.6);
-    filter: brightness(0.6);
-    transition: 0.3s;
-}
-
-.desc {
-    position: absolute;
-    bottom: 10%;
-    left: 8%;
-    line-height: 1;
-}
-.proj_desc {
-    font-family: mrs-eaves-xl-serif, serif;
-    font-weight: 400;
-    font-style: italic;
-    font-size: 1.25rem;
-    color: white;
-}
-.proj_title {
-    font-family: gill-sans-nova, sans-serif;
-    font-weight: 800;
-    font-style: normal;
-    font-size: 2rem;
-    color: white;
-}
-
-@media only screen and (min-width: 961px) {
-    .proj_row {
-        width: 100%;
-        display: flex;
-        justify-content: space-around;
-        border:0;
-    }
-    .desc {
-        line-height: 1;
-    }
-    .project {
-        /* width: 33%; */
-    }
+    height: 75vh;
 }
 
 /************************/
