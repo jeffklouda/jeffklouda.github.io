@@ -28,6 +28,10 @@ nav {
     height: 100%;
 }
 
+.final_proj_img {
+    box-shadow: 0 0 8px 8px #294398 inset;
+}
+
 @media only screen and (min-width: 961px) {
     .final_proj_img {
         width: 50%;

@@ -23,7 +23,15 @@ nav {
 }
 
 @media only screen and (min-width: 961px) {
-    .slider {
-        width: 45%;
+    .final_proj_img {
+        width: 50%;
     }
+}
+
+.final_proj_img {
+    box-shadow: 0 0 8px 32px #e9804e inset;
+}
+
+#details img {
+    box-shadow: 0 0 2px 2px #eee;
 }

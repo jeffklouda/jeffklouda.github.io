@@ -131,7 +131,7 @@ input:not(:checked) ~ #collapse_menu {
 }
 
 #nav_menu.change{
-    height: 15rem;
+    height: 10rem;
     width: 100%;
     background: #fff;
     transition: 0.5s;
@@ -189,7 +189,7 @@ input:not(:checked) ~ #collapse_menu {
     font-weight: 400;
     font-style: normal;
     padding: 0 10%;
-    height: 90vh;
+    height: 60vh;
     font-size: 1rem;
 }
 
@@ -206,13 +206,13 @@ input:not(:checked) ~ #collapse_menu {
     font-family: gill-sans-nova, sans-serif;
     font-weight: 800;
     font-style: normal;
-    font-size: 2rem;
-    padding-top: 40vh;
+    font-size: 1.25rem;
+    padding-top: 25vh;
 }
 
 @media only screen and (min-width: 961px) {
     #intro_text h1 {
-        font-size: 5vh;
+        font-size: 4vh;
     }
 }
 
