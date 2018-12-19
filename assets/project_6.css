@@ -1,0 +1,37 @@
+/************************/
+/* Nav                  */
+/************************/
+
+nav {
+    background-color: #f27741;
+}
+
+/************************/
+/* Intro                */
+/************************/
+
+#intro {
+    background-color: #f27741;
+}
+
+.subtitle {
+    color: #e9c8b9;
+}
+
+.sec_title {
+    color: #e9c8b9;
+}
+
+@media only screen and (min-width: 961px) {
+    .final_proj_img {
+        width: 50%;
+    }
+}
+
+.final_proj_img {
+    box-shadow: 0 0 8px 32px #f27741 inset;
+}
+
+#details img {
+    box-shadow: 0 0 2px 2px #eee;
+}

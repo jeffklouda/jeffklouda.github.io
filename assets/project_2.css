@@ -1,0 +1,29 @@
+/************************/
+/*  Header              */
+/************************/
+
+nav {
+    background-color: #ff5651;
+}
+
+/************************/
+/* Intro                */
+/************************/
+
+#intro {
+    background-color: #ff5651;
+}
+
+.subtitle {
+    color: #ffb1af;
+}
+
+.sec_title {
+    color: #ffb1af;
+}
+
+@media only screen and (min-width: 961px) {
+    .final_proj_img {
+        width: 45%;
+    }
+}

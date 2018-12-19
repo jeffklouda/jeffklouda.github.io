@@ -1,0 +1,306 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+/************************/
+/* Container            */
+/************************/
+
+#container {
+    margin: 0 5%;
+}
+
+@media only screen and (min-width: 961px) {
+    #container {
+        margin: 0 3rem;
+    }
+}
+
+/************************/
+/* Intro                */
+/************************/
+
+#intro {
+    width: 100%;
+    padding-bottom: 10vh;
+    z-index: 0;
+    box-shadow: 0 0.3rem 0.25rem 0 #ccc;
+    margin-bottom: 10rem;
+}
+
+#intro_content {
+    margin: 0 12.5%;
+    padding-top: 10vh;
+}
+
+.title {
+    font-family: gill-sans-nova, sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    color: #fff;
+    font-size: 2rem;
+}
+
+.subtitle {
+    font-family: mrs-eaves-xl-serif, serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: #8492f3;
+    margin-bottom: 10vh;
+}
+
+.sec {
+    margin-bottom: 2rem;
+}
+
+.sec_title {
+    font-family: mrs-eaves-xl-serif, serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 1rem;
+    color: #8492f3;
+    margin-bottom: 1rem;
+}
+
+.sec_body {
+    font-family: gill-sans-nova, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1rem;
+    line-height: 1.2;
+    color: #fff;
+}
+
+.final_proj_img img{
+    width: 100%;
+    margin: 10vh auto 0 auto;
+}
+
+@media only screen and (min-width: 961px) {
+    #intro {
+        height: 100vh;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+    }
+
+    #intro_content {
+        padding-top: 0;
+        margin: auto 10%;
+        height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    #intro_text {
+        width: 50%;
+    }
+
+    .final_proj_img {
+        width: 40%;
+    }
+}
+
+.video {
+    width: 100%;
+    height: 40vh;
+}
+
+@media only screen and (min-width: 961px) {
+    .video {
+        width: 40%;
+        height: 100%;
+    }
+}
+
+p a {
+    color: white;
+}
+
+/************************/
+/* Details              */
+/************************/
+
+#details {
+    margin: 0 10%;
+}
+
+#details img{
+    width: 100%;
+}
+
+.det_sec {
+    margin: 20vw 5%;
+}
+
+#details h2 {
+    font-family: gill-sans-nova, sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.det_sec h2 {
+    font-family: gill-sans-nova, sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.det_sec p {
+    font-family: gill-sans-nova, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.2;
+    font-size: 1rem;
+}
+
+@media only screen and (min-width: 961px) {
+    #details {
+        margin: 0 5%;
+    }
+
+    .det_block {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 10vh;
+    }
+
+    .reverse {
+        flex-direction: row-reverse;
+    }
+
+    #details img {
+        width: 50%;
+        box-shadow: 0 0 0.15rem 0.15rem #ccc;
+    }
+
+    .det_sec {
+        margin: 0;
+        width: 40%;
+    }
+}
+
+#return {
+    margin: 6rem auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+@media only screen and (min-width: 961px) {
+#return {
+    width: 20rem;
+    flex-direction: row;
+    justify-content: space-around;
+}
+}
+#return a {
+    text-decoration: none;
+    font-family: mrs-eaves-xl-serif, serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: #777;
+}
+
+#return a:hover {
+    color: #000;
+}
+
+#layout {
+    margin: 0 10%;
+}
+
+#layout h2 {
+    font-family: gill-sans-nova, sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.slider{
+    max-width: 100%;
+	position: relative;
+    box-shadow: 0 0 0.15rem 0.15rem #ccc;
+}
+
+.int {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+@media only screen and (min-width: 961px) {
+    .cover {
+        /* height: 100%; */
+    }
+}
+
+#slideposition {
+    display: none;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: #ccc;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.slide {
+    display: none;
+}
+
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1s;
+  animation-name: fade;
+  animation-duration: 1s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: 0}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: 0}
+  to {opacity: 1}
+}
+
+
+/************************/
+/* Footer               */
+/************************/
+
+footer {
+    height: 5rem;
+}

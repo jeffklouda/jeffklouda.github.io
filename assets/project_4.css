@@ -1,0 +1,29 @@
+/************************/
+/*  Header              */
+/************************/
+
+nav {
+    background-color: #efb501;
+}
+
+/************************/
+/* Intro                */
+/************************/
+
+#intro {
+    background-color: #efb501;
+}
+
+.subtitle {
+    color: #efe7cd;
+}
+
+.sec_title {
+    color: #efe7cd;
+}
+
+@media only screen and (min-width: 961px) {
+    .slider {
+        width: 45%;
+    }
+}
