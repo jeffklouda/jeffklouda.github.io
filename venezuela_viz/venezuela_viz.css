@@ -1,0 +1,100 @@
+body {
+    font-size: 1rem;
+    font-family: "trade-gothic-next", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    color: #999;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    font-family: "trade-gothic-next", sans-serif;
+    font-weight: 300;
+    margin-top: 1rem;
+    padding-bottom: 0;
+    margin-bottom: -20px;
+    color: #BBBBBB;
+}
+
+path {
+    stroke: steelblue;
+    stroke-width: 2;
+    fill: none;
+}
+
+img {
+    height:100px;
+    width:100px;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: none;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
+div.tooltip {
+    position: absolute;
+    text-align: left;
+    width: 250px;
+    padding: 5px;
+    font-size: 1rem;
+    color: #888;
+    font-family: trade-gothic-next-condensed, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    /*background: lightsteelblue;*/
+    border: 0px;
+    /*border-radius: 8px;*/
+    pointer-events: none;
+}
+
+div.tooltip b {
+    font-size: 1rem;
+    font-family: trade-gothic-next-condensed, sans-serif;
+    font-weight: 800;
+    font-style: normal;
+}
+
+#Bogota.inactive {
+    fill: gray;
+}
+
+.department {
+    stroke: none;
+    fill: lightgray;
+}
+
+#viz {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+
+#map-selector {
+    height: 600px;
+    width: 600px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*background: green;*/
+}
+
+#sources {
+    margin-top: 50px;
+    color: #AAAAAA;
+    font-size: 0.6rem;
+    line-height: 0.25rem;
+}
