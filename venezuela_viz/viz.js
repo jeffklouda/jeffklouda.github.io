@@ -313,9 +313,9 @@ function updateData(solo) {
 
     svg.append("text")
       .attr("transform", "rotate(90)")
-      .attr("y", - width - (margin.left / 4))
+      .attr("y", - width - (margin.left / 3))
       .attr("x",0 + (height / 2))
-      .attr("dy", "1rem")
+      .attr("dy", "1em")
       .style("text-anchor", "middle")
       .style("fill", "#999")
       .text("Number of Venezuelan Migrants");
