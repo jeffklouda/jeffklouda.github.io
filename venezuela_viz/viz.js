@@ -290,9 +290,7 @@ function updateData(solo) {
     x.domain(d3.extent(data, function(d) { return d.Date; }));
     y.domain([0, yMax*1.1]);
 
-    if (solo) {
-        addMilestones();
-    }
+    addMilestones();
     var paths = [];
 
     /*for (var i = 0; i < departments.length; i++) {
@@ -419,20 +417,14 @@ function addMilestones() {
                 .attr("y1", (height))
                 .attr("x2", x(parseDate(date)))
                 .attr("y2", (height-margin.top - margin.bottom) * 0.1)
-                .style("stroke-width", 4);
-            svg.append("circle")
-                .attr("r", 2)
-                .attr("cx", x(parseDate(date)))
-                .attr("cy", (height - margin.top - margin.bottom) * 0.15 + (height * 0.95 * i/numDots) - margin.top)
                 .attr("mDate", date)
                 .style("stroke-width", 2)
-                .style("stroke-dasharray", "7,7")
-                .style("fill", "#EEE")
+                .style("stroke", "#EEEEEE")
                 .on("mouseover", function(d) {
                     div.transition()
                         .duration(200)
                         .style("opacity", 1);
-                    if (this.cx.baseVal.value < width/2) {
+                    if (this.x1.baseVal.value < width/2) {
                         div.html("<p><b>" + formatDate(parseDate(this.attributes.mDate.value)) + "</b><br>" + milestones[this.attributes.mDate.value] + "</p>")
                             .style("left", (d3.event.pageX) + "px")
                             .style("top", (d3.event.pageY - 28) + "px");
