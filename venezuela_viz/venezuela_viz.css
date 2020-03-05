@@ -10,8 +10,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: auto;
-
+    align-items: center;
 }
 
 h1 {
@@ -98,4 +97,8 @@ div.tooltip b {
     color: #AAAAAA;
     font-size: 0.6rem;
     line-height: 0.25rem;
+}
+
+#spacer {
+    width: 1250px;
 }
