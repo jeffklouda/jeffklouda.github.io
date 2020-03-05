@@ -214,7 +214,13 @@ var maxValue = 0;
 
 var toggler = false;
 
-updateData(false);
+window.setTimeout(function() {
+    updateData(false);
+    d3.select("#intro_slide")
+        .transition()
+        .duration(2000)
+        .style("opacity", 0);
+}, 2000);
 
 for (var i = 0; i < departments.length; i++) {
     d3.select(("#" + departments[i])).on("mouseover", function(d) {
