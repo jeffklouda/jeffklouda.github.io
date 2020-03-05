@@ -214,13 +214,19 @@ var maxValue = 0;
 
 var toggler = false;
 
+var intro = d3.select("#intro_slide");
+
 window.setTimeout(function() {
     updateData(false);
-    d3.select("#intro_slide")
+    intro
         .transition()
         .duration(2000)
         .style("opacity", 0);
 }, 2000);
+
+window.setTimeout(function() {
+    intro.remove();
+}, 4000);
 
 for (var i = 0; i < departments.length; i++) {
     d3.select(("#" + departments[i])).on("mouseover", function(d) {
